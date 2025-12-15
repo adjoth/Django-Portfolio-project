@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-bs-theme="auto">
+<head>
+    <title>Adam Thomas</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: #0000001a;
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em #0000001a,
+          inset 0 0.125em 0.5em #00000026;
+      }
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+      .bd-mode-toggle .bi {
+        width: 1em;
+        height: 1em;
+      }
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Adam Thomas</h1>
+            <p class="lead text-body-secondary">
+              Experienced in Python development with 6+ years applying it across automation, backend scripting, and data-driven solutions. 
+              Proficient in full-stack development with strong expertise in React.js, RESTful API integration, and cloud platforms. 
+              Adept at designing and implementing CI/CD pipelines with Jenkins and AWS, driving automation and DevOps best practices to streamline delivery and enhance reliability. 
+              Recognized for strong problem-solving skills, cross-functional collaboration, and producing clean, maintainable code in fast-paced environments. 
+              Passionate about applying Generative AI and emerging technologies to build innovative, user-centric applications that create measurable impact.
+            </p>
+            <p>
+              <a href="mailto:thomasadam911@yahoo.com" class="btn btn-primary my-2">Email me</a>
+              <a href="https://github.com/adjoth" target="_blank" class="btn btn-secondary my-2">Github</a>
+            </p>
+            <img src="{% static 'adam.jpg' %}" alt="Adam Thomas" height="300"></img>
+          </div>
+        </div>
+      </section>
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          {% for job in jobs %}
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-sm-4">
+              <a href="{% url 'job.details' job.id %}">
+                <div class="card shadow-sm">
+                  <img
+                    src="{{job.image.url}}"
+                    height="auto"
+                    width="auto"
+                    alt="What I did"
+                  ></img>
+                  </svg>
+                  <div class="card-body">
+                    <p class="card-text">
+                      {{job.summary|truncatewords:2}}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+    <script src="{% static 'jquery-3.7.1.min.js'%}"></script>
+    <script src="{% static 'popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
